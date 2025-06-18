@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // POST (echter Webhook in Produktion)
 app.post("/api/solarinfo", async (req, res) => {
-  const address = req.body.address;
+  const address = req.body.address || req.query.address;
   if (!address) return res.status(400).json({ error: "No address provided" });
 
   try {
